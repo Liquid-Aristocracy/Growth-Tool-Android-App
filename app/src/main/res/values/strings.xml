@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Growth Tool</string>
+    <string name="birth_date_text">Birthday:</string>
+    <string name="this_date_text">Current Date:</string>
+    <string name="reset">Reset</string>
+    <string name="y">\u0020year(s)\u0020</string>
+    <string name="m">\u0020month(s)\u0020</string>
+    <string name="d">\u0020day(s)\u0020</string>
+    <string name="age_hint">Age:\u0020</string>
+    <string name="age_alert">Current date is smaller than birthday!</string>
+    <string name="calculating">Calculating...</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">生长发育</string>
+    <string name="birth_date_text">出生日期：</string>
+    <string name="this_date_text">当前日期：</string>
+    <string name="reset">还原</string>
+    <string name="y">\u0020岁\u0020</string>
+    <string name="m">\u0020个月\u0020</string>
+    <string name="d">\u0020天\u0020</string>
+    <string name="age_hint">年龄：</string>
+    <string name="age_alert">当前日期不能比生日小！</string>
+    <string name="calculating">计算中...</string>
+</resources>
