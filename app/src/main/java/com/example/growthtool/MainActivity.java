@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements
     Calendar birthday = Calendar.getInstance();
     Calendar thisday = Calendar.getInstance();
 
+    int yearsAge, monthAge, dayAge;
+
     @SuppressLint("SetTextI18n")
     private void calcAge() {
         ageresult.setText(R.string.calculating);
@@ -34,12 +36,28 @@ public class MainActivity extends AppCompatActivity implements
             ageresult.setText(R.string.age_alert);
         }
         else {
-            int diffInDays = (int) (diffInMilis / (24 * 60 * 60 * 1000));
-            int yearsAge = diffInDays / 365;
-            diffInDays -= yearsAge * 365;
-            int monthAge = diffInDays / 30;
-            diffInDays -= monthAge * 30;
-            int dayAge = diffInDays;
+            int tempday = thisday.get(Calendar.DAY_OF_MONTH);
+            int tempmonth = thisday.get(Calendar.MONTH);
+            int tempyear = thisday.get(Calendar.YEAR);
+            int[] dayinmonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            if ((tempyear % 4 == 0 && tempyear % 100 != 0) || tempyear % 400 == 0) {
+                dayinmonth[1] = 29;
+            }
+            if (tempday < birthday.get(Calendar.DAY_OF_MONTH)) {
+                tempmonth -= 1;
+                if (tempmonth < 0) {
+                    tempmonth = 11;
+                    tempyear -= 1;
+                }
+                tempday += dayinmonth[tempmonth];
+            }
+            if (tempmonth < birthday.get(Calendar.MONTH)) {
+                tempyear -= 1;
+                tempmonth += 12;
+            }
+            yearsAge = tempyear - birthday.get(Calendar.YEAR);
+            monthAge = tempmonth - birthday.get(Calendar.MONTH);
+            dayAge = tempday - birthday.get(Calendar.DAY_OF_MONTH);
             ageresult.setText(getString(R.string.age_hint)
                     + yearsAge + getString(R.string.y)
                     + monthAge + getString(R.string.m)
@@ -59,21 +77,21 @@ public class MainActivity extends AppCompatActivity implements
                 today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
         thisday.set(Calendar.MILLISECOND, 0);
 
-        birthdate = (TextView) findViewById(R.id.BirthDate);
+        birthdate = findViewById(R.id.BirthDate);
         birthdate.setText(birthday.get(Calendar.YEAR) + "-"
                 + (birthday.get(Calendar.MONTH) + 1) + "-" + birthday.get(Calendar.DAY_OF_MONTH));
         birthdate.setOnClickListener(this);
-        resetbirth = (Button) findViewById(R.id.resetButton1);
+        resetbirth = findViewById(R.id.resetButton1);
         resetbirth.setOnClickListener(this);
 
-        thisdate = (TextView) findViewById(R.id.ThisDate);
+        thisdate = findViewById(R.id.ThisDate);
         thisdate.setText(thisday.get(Calendar.YEAR) + "-"
                 + (thisday.get(Calendar.MONTH) + 1) + "-" + thisday.get(Calendar.DAY_OF_MONTH));
         thisdate.setOnClickListener(this);
-        resetthis = (Button) findViewById(R.id.resetButton2);
+        resetthis = findViewById(R.id.resetButton2);
         resetthis.setOnClickListener(this);
 
-        ageresult = (TextView) findViewById(R.id.ageResult);
+        ageresult = findViewById(R.id.ageResult);
         ageresult.setText(R.string.calculating);
         ageresult.setOnClickListener(this);
         calcAge();
