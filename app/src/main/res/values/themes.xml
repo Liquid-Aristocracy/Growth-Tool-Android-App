@@ -16,8 +16,8 @@
 
     <style name="DatePickerTheme" parent="ThemeOverlay.MaterialComponents.Dialog">
         <item name="android:datePickerStyle">@style/MyDatePicker</item>
-        <item name="android:buttonBarPositiveButtonStyle">@style/Widget.MaterialComponents.Button.TextButton</item>
-        <item name="android:buttonBarNegativeButtonStyle">@style/Widget.MaterialComponents.Button.TextButton</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/Widget.MaterialComponents.Button.TextButton.Dialog</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/Widget.MaterialComponents.Button.TextButton.Dialog</item>
     </style>
 
     <style name="MyDatePicker" parent="android:Widget.Material.DatePicker">
